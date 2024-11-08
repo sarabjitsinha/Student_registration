@@ -1,9 +1,9 @@
 const nameST=document.getElementById("Name")
 
 nameST.addEventListener("change",function(){
-    sessionStorage.setItem("Name",nameST.value);
-    let storevalue=sessionStorage.getItem("Name");
-    console.log("Name :",storevalue);
+    localStorage.setItem("Name",nameST.value);
+    let studname=localStorage.getItem("Name");
+    console.log("Name :",studname);
   
 })
 
@@ -11,8 +11,8 @@ const studid=document.getElementById("studentid")
 
 
 studid.addEventListener("change",function(){
-    sessionStorage.setItem("Student Id",studid.value);
-    let studidval=sessionStorage.getItem("Student Id");
+    localStorage.setItem("Student Id",studid.value);
+    let studidval=localStorage.getItem("Student Id");
     console.log("Student Id :",studidval);
     
 })
@@ -20,16 +20,20 @@ studid.addEventListener("change",function(){
 const studemail=document.getElementById("email")
 
 studemail.addEventListener("change",function(){
-    sessionStorage.setItem("Email",studemail.value);
-    let studemailval=sessionStorage.getItem("Email");
+    localStorage.setItem("Email",studemail.value);
+    let studemailval=localStorage.getItem("Email");
     console.log("Student Mail :",studemailval);
     
 })
 const studcontact=document.getElementById("contact")
 
 studcontact.addEventListener("change",function(){
-    sessionStorage.setItem("Contact",studcontact.value);
-    let studconval=sessionStorage.getItem("Contact");
+    localStorage.setItem("Contact",studcontact.value);
+    let studconval=localStorage.getItem("Contact");
     console.log("Student contact :",studconval);
     
+})
+
+document.getElementById("getdetail").addEventListener("click",function(){
+    document.createElement("div").innerHTML=studname;
 })
