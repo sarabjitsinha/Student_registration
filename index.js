@@ -1,3 +1,6 @@
+
+
+
 const nameST=document.getElementById("Name")
 
 nameST.addEventListener("change",function(){
@@ -32,8 +35,4 @@ studcontact.addEventListener("change",function(){
     let studconval=localStorage.getItem("Contact");
     console.log("Student contact :",studconval);
     
-})
-
-document.getElementById("getdetail").addEventListener("click",function(){
-    document.createElement("div").innerHTML=studname;
 })
