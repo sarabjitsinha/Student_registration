@@ -11,34 +11,53 @@
     <link rel="shortcut icon" href="dom_fav.jpeg" type="image/x-icon">
     <title>Student Registration Portal</title>
 </head>
-<body >
+<body>
     <header>
-        <h1 class="text-green-800 font-extrabold flex justify-center bg-red-400">Welcome to the student Registration Portal</h1>
+        <h1 class="text-green-700 font-extrabold flex justify-center bg-red-400 text-xl">Welcome to the student Registration Portal</h1>
     </header>    
-        <section class="bg-blue-400 w-screen h-screen flex flex-grow-2 justify-around">  
+        <section class="bg-blue-400 flex justify-around">  
             <article>
-                <h2 class="font-extrabold">Please enter the details for the registration and <i>Happy Learning</i> </h2>
-            <form   class="mt-36" action="">
-            <label for="Name">Student Name</label>
-            <input class="inputing" type="text" name="Full name" id="Name">
-            <label for="studentid">Student Id</label>  
-            <input class="inputing" type="text" name="Student identity" id="studentid">
-            <label for="email">Enter Your Email</label>
-            <input class="inputing" type="email" name="emailid" id="email">
-            <label for="contact">Enter your contact number</label>
-            <input class="inputing" type="text" name="contactno" id="contact">
-            <label for="">Select your gender</label>
-            <br>
-            <input type="radio" name="gender" id="Male">
-            <label for="Male" >Male</label>
-            <input type="radio" name="gender" id="Female">
-            <label for="Female">Female</label>
-            <br>
-            <br>
-            <button class="border-spacing-2 border-l-fuchsia-900 bg-lime-400 rounded-xl w-28 hover:bg-orange-600" value="Submit" id="submitbutton">Submit</button>
-            <button class="border-spacing-2 rounded-xl border-cyan-500 bg-red-500 w-28" type="button" value="Delete">Delete</button>
-            <button class="border-spacing-2 rounded-xl border-l-fuchsia-900 bg-yellow-600 w-28" type="button" value="Edit">Edit</button>
+            <h2 class="font-extrabold">Please enter the details for the registration and <br><i >Happy Learning</i> </h2>
+            <!-- <div class="container bg-blue-400"> -->
+            <form  class="" action="">
+                <div class="input_class">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" placeholder="Name" maxlength="30" onkeyup="NameValidate()">
+                    <span id="namespan"> </span>
+                </div>
+
+                <div class="input_class">
+                    <label for="studentid" >Student Id</label>
+                    <input type="text" name="studentid" id="studentid" placeholder="0123456789" maxlength="7" onkeyup="StudentValidate()">
+                    <span id="studentspan"></span>
+                </div>
+            
+                <div class="input_class">
+                    <label for="phone" >Telephone</label>
+                    <input type="text" name="phone" id="phone" placeholder="0123456789" maxlength="10" onkeyup="PhoneValidate()">
+                    <span id="phonespan"></span>
+                </div>
+            
+                <div class="input_class">
+                    <label for="email">Email</label>
+                    <input type="text" name="email" id="email" placeholder="Email" maxlength="40" onkeyup="EmailValidate()">
+                    <span id="emailspan"></span>
+                </div>
+               
+                <div class="input_class">
+                    <label for="">Gender</label>
+                    <br>
+                    <input type="radio" name="gender" id="Male"  value="Male">
+                    <label for="Male" >Male</label> 
+                    <input type="radio" name="gender" id="Female"  value="Female">
+                    <label for="Female">Female</label>
+                    <span id="genderspan"></span>
+                </div>
+            
+            <button class="border-spacing-2 left-20 relative border-l-fuchsia-900 bg-lime-400 rounded-xl w-28 hover:bg-orange-600" value="Submit" id="submitbutton" onclick="return FormValidate()">Submit</button>
+            <!-- <button class="border-spacing-2 rounded-xl border-l-fuchsia-900 bg-yellow-600 w-28" type="button" value="Edit" id="edit">Edit</button> -->
         </form>
+        </div>
         <br>
         <nav >
             <a class="border-4 border-red-900 rounded-lg bg-green-800 text-yellow-300" href="studdetails.html" target="_blank" >Click here to check your details</a>
@@ -47,17 +66,18 @@
     </article>
     <article >
         <figure >
-            <img id="studpic"  src="stud.jpg" alt="Pic of student" class="h-screen w-64" >
+            <img id="studpic"  src="stud.jpg" alt="Pic of student" class="w-64" >
         </figure>
         <figcaption >
             
         </figcaption>
     </article>
     </section>
-
+    
     <footer class="w-screen h-10 border-spacing-2 border-gray-950 font-semibold bg-slate-700">
         @copyright reserved
     </footer>
        <script src="index.js"></script> 
+       <!-- <script src="studdetails.js"></script> -->
 </body>
 </html>

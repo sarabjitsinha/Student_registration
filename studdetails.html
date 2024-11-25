@@ -6,12 +6,68 @@
     <link rel="shortcut icon" href="fav_studdet.jpg" type="image/x-icon">
     <link rel="stylesheet" href="/src/output.css">
     <link rel="stylesheet" href="studdetails.css">
+    
     <title>Student  Details </title>
 </head>
-<body class="bg-fuchsia-700">
+<body class="bg-orange-400">
     <h1 class="text-center font-extrabold text-3xl text-indigo-800 bg-gray-400">Displaying the records</h1>
-    <div id="getdetail">
-        <button type="button">click here for Details</button>  
+    <div class="flex justify-evenly">
+        <button type="button" class="bg-emerald-400 border-2 border-black rounded-lg" id="getdetail">Click here for Details</button>  
+        <!-- <label for="searching" class="bg-teal-600">Enter search value</label> -->
+    <input type="text" name="searching" id="searching" class="bg-rose-600 rounded-lg" placeholder="Enter Search value">
+    <br>
+    <button type="button" id="searchbutton" class="bg-orange-600 border-4 border-blue-500 rounded-xl w-24" onclick="SearchItem()"> search</button>
+    <br>
+    <button type="submit" id="delbutton" class="bg-red-300 rounded-lg border-2 border-slate-700">Click to delete the Record</button>
+    <button class="border-spacing-2 rounded-xl border-cyan-500 bg-red-500 w-36" type="button"  id="Delete">Delete All Records</button>
+</div>
+    
+    <div class="w-screen flex justify-center" id="Scrolleffect">
+                <ul class="flex-col justify-center flex-wrap items-center font-bold">
+                <li></li>
+            </ul>
+      
+    </div>
+    <div >
+        <form id="editform" class="hide" action="">
+            <div class="input_class">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" placeholder="Name" maxlength="30" onkeyup="NameValidate()">
+                <span id="namespan"> </span>
+            </div>
+
+            <div class="input_class">
+                <label for="studentid" >Student Id</label>
+                <input type="text" name="studentid" id="studentid" placeholder="0123456789" maxlength="7" onkeyup="StudentValidate()">
+                <span id="studentspan"></span>
+            </div>
+        
+            <div class="input_class">
+                <label for="phone" >Telephone</label>
+                <input type="text" name="phone" id="phone" placeholder="0123456789" maxlength="10" onkeyup="PhoneValidate()">
+                <span id="phonespan"></span>
+            </div>
+        
+            <div class="input_class">
+                <label for="email">Email</label>
+                <input type="text" name="email" id="email" placeholder="Email" maxlength="40" onkeyup="EmailValidate()">
+                <span id="emailspan"></span>
+            </div>
+           
+            <div class="input_class">
+                <label for="">Gender</label>
+                <br>
+                <input type="radio" name="gender" id="Male"  value="Male">
+                <label for="Male" >Male</label> 
+                <input type="radio" name="gender" id="Female"  value="Female">
+                <label for="Female">Female</label>
+                <span id="genderspan"></span>
+            </div>
+        
+        <button class="border-spacing-2 left-20 relative border-l-fuchsia-900 bg-lime-400 rounded-xl w-28 hover:bg-orange-600" value="Submit" id="submitbutton" onclick="return FormValidate()">Submit</button>
+        <!-- <button class="border-spacing-2 left-48 relative rounded-xl border-l-fuchsia-900 bg-lime-600 w-28" type="button" value="Edit" id="edit" onclick="EditItem()">Edit</button> -->
+    </form>
+
     </div>
     <script src="studdetails.js"></script>
 </body>

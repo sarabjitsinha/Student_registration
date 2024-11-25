@@ -1,7 +1,78 @@
-body {
-    background-color: aquamarine; 
+body
+ {
+    background-color:aquamarine; 
 }
 
-html {
-    scroll-behavior: smooth;
+html 
+{
+    scroll-behavior:smooth;
 }
+
+li
+ {
+    display: block;
+    justify-content: center;
+}
+
+.ShowDetail{
+    height: 400px;
+    overflow: auto;
+}
+
+
+
+.input_class label{
+    flex-basis: 30%;
+}
+    
+
+.input_class{
+    width:100%;
+    display:inline-flex;
+    align-items: center;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+ form{
+    margin-top: 25px;
+    width: 100%;
+    max-width: 700px;
+    padding: 50px 30px 20px;
+    background-color: rgb(255, 115, 0);
+    border-radius: 100px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+ .input_class span{
+    position:absolute;
+    bottom: 12px;
+    right: 2px;
+    top: 2px;
+    font-size: small;
+    color: red;
+    }
+
+
+ input{
+    width: 80%;
+    display: inline-flex;
+    border-right: none;
+    border-top: none;
+    border-left: none;
+    background-color:none;
+     
+ }
+
+ input:focus{
+    outline: none;
+ }
+
+ .hide{
+    display: none;
+ }
+
+ #recorddetail{
+    overflow: auto;
+ }
