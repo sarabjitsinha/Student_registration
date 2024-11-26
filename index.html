@@ -7,7 +7,7 @@
     <meta name="keywords" content="Student enrollment ">
     <meta name="author" content="Sarabjit Sinha">
     <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="/src/output.css">
+    <link rel="stylesheet" href="output.css">
     <link rel="shortcut icon" href="dom_fav.jpeg" type="image/x-icon">
     <title>Student Registration Portal</title>
 </head>
@@ -17,8 +17,8 @@
     </header>    
         <section class="bg-blue-400 flex justify-around">  
             <article>
-            <h2 class="font-extrabold">Please enter the details for the registration and <br><i >Happy Learning</i> </h2>
-            <!-- <div class="container bg-blue-400"> -->
+            <h2 class="font-extrabold text-center">Please enter the details for the registration and <br><i class="flex justify-center" >Happy Learning</i> </h2>
+            
             <form  class="" action="">
                 <div class="input_class">
                     <label for="name">Name</label>
@@ -47,20 +47,19 @@
                 <div class="input_class">
                     <label for="">Gender</label>
                     <br>
-                    <input type="radio" name="gender" id="Male"  value="Male">
+                    <input type="radio" name="gender" id="Male"  value="Male" >
                     <label for="Male" >Male</label> 
                     <input type="radio" name="gender" id="Female"  value="Female">
                     <label for="Female">Female</label>
-                    <span id="genderspan"></span>
+                    <span id="genderspan"><br>Gender is required</span>
                 </div>
             
             <button class="border-spacing-2 left-20 relative border-l-fuchsia-900 bg-lime-400 rounded-xl w-28 hover:bg-orange-600" value="Submit" id="submitbutton" onclick="return FormValidate()">Submit</button>
-            <!-- <button class="border-spacing-2 rounded-xl border-l-fuchsia-900 bg-yellow-600 w-28" type="button" value="Edit" id="edit">Edit</button> -->
         </form>
         </div>
         <br>
         <nav >
-            <a class="border-4 border-red-900 rounded-lg bg-green-800 text-yellow-300" href="studdetails.html" target="_blank" >Click here to check your details</a>
+            <a class="border-4 border-red-900 rounded-lg bg-green-700 text-yellow-300" href="studdetails.html" target="_blank" >Click to visit the Admin Page</a>
         </nav>
         
     </article>
@@ -74,10 +73,10 @@
     </article>
     </section>
     
-    <footer class="w-screen h-10 border-spacing-2 border-gray-950 font-semibold bg-slate-700">
-        @copyright reserved
+    <footer class="w-screen h-10 border-spacing-2 border-gray-600 font-semibold bg-slate-500">
+     <p class="flex"> @copyright reserved <a href="https://github.com/sarabjitsinha/Student_registration" target="_blank"><img src="GitHub-logo.png" height="40px" width="70px"> </a></p>
     </footer>
        <script src="index.js"></script> 
-       <!-- <script src="studdetails.js"></script> -->
+    
 </body>
 </html>

@@ -1,7 +1,7 @@
 var obj={}
 var i=1;
 var genderval;
-   
+
 function NameValidate(){
     const nameregex=/^[a-zA-Z]*\s{1}[a-zA-z]{3,}$/
     const nameel=document.getElementById('name')    
@@ -26,7 +26,7 @@ function NameValidate(){
    document.querySelector('#namespan').innerHTML=`<img src="check.png" alt="" height="13px" width="13px">`
    return true
    
-                       }                        
+    }                        
 
 
 function StudentValidate() {
@@ -124,25 +124,31 @@ const gender=document.querySelectorAll("input[name=gender]");
 gender.forEach((item,index)=>{
 item.addEventListener('change',function(){
     genderval=item.value;
+    document.querySelector('#genderspan').innerHTML="" 
     GenderValidate(genderval);
 })
 })
 
 function GenderValidate(genderval) {
+    
 if(genderval==''){
-   document.querySelector('#genderspan').innerHTML="Please select the gender"
+    
+   document.querySelector('#genderspan').innerHTML=`<br>Please select the gender`;
+   
    return false
 }
-document.querySelector('#genderspan').innerHTML=`<img src="check.png" alt="" height="13px" width="13px">`
+
 return true
 }
 
 function FormValidate() {
     if(!(NameValidate()) || !(StudentValidate()) || !(PhoneValidate()) || !(EmailValidate()) || !(GenderValidate())){
-        alert("invalid entry")
-        return false
+        alert("Invalid entry!! Discarding changes ")
+         window.location.reload()
+            return false
     }
-    else {
+    else
+     {
     const nameel=document.getElementById('name')    
     const nameval=nameel.value;
     const studentel=document.getElementById('studentid')    
@@ -160,12 +166,12 @@ if(i<=1)
      i=1;
     }           
         
-        localStorage.setItem(`Record${i}`, nameval +','+ studentval +','+ phoneval +','+ emailval +','+genderval)
+        localStorage.setItem(`Record${i}`, nameval +','+ studentval +','+ phoneval +','+ emailval +','+ genderval)
         alert(`Record saved for Record${i}`)
         counter=i
         counter++;
         localStorage.setItem("counter",counter)
-         i++;
+        i++;
 }      
     
 }

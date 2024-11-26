@@ -7,6 +7,10 @@ let genderval;
 document.getElementById("getdetail").addEventListener('click',function (){
 const ulel=document.querySelector('ul')
 document.getElementById("Scrolleffect").classList.toggle("ShowDetail")
+document.querySelector('#searching').classList.toggle('hide')
+document.getElementById("searchbutton").classList.toggle('hide')
+document.getElementById("getdetail").classList.toggle('hide')
+document.getElementById("image").classList.toggle('hide')
 ulel.insertAdjacentHTML('beforeend',`<div style="color:blue">Showing All Records </div>`)
     let i=localStorage.length
         for (let k=1;k<i;k++){
@@ -25,16 +29,20 @@ ulel.insertAdjacentHTML('beforeend',`<div style="color:blue">Showing All Records
                 
                 switch(ar2){
                     case 0:
+                        if(array2[ar2]===''){
+                            ulel.insertAdjacentHTML('beforeend',`<div style="color:red;">Name: Record Deleted</div>`);
+                            break;
+                        }
                     ulel.insertAdjacentHTML('beforeend',`<div>Name: ${array2[ar2]}</div>`)
                     break;
                 case 1:
                     ulel.insertAdjacentHTML('beforeend',`<div>Student Id: ${array2[ar2]}</div>`)
                     break;
                 case 2:
-                    ulel.insertAdjacentHTML('beforeend',`<div>Student Email: ${array2[ar2]}</div>`)
+                    ulel.insertAdjacentHTML('beforeend',`<div>Student Contact: ${array2[ar2]}</div>`)
                     break;   
                 case 3:
-                    ulel.insertAdjacentHTML('beforeend',`<div>Student contact: ${array2[ar2]}</div>`)
+                    ulel.insertAdjacentHTML('beforeend',`<div>Student Email: ${array2[ar2]}</div>`)
                     break;
                 case 4:
                     ulel.insertAdjacentHTML('beforeend',`<div>Gender: ${array2[ar2]}</div>`)
@@ -54,7 +62,11 @@ ulel.insertAdjacentHTML('beforeend',`<div style="color:blue">Showing All Records
     function SearchItem(){
     const inpEl=document.querySelector('#searching')
     const searchEl=document.getElementById("searchbutton")
-    // searchEl.addEventListener("click", function(e){
+        document.querySelector('#searching').classList.toggle('hide')
+        document.getElementById("searchbutton").classList.toggle('hide')
+        document.getElementById("getdetail").classList.toggle('hide')
+        document.getElementById("Delete").classList.toggle('hide')
+        document.getElementById("image").classList.toggle('hide')
         const ulel=document.querySelector('ul')
         let array3=[]
         let i=localStorage.length
@@ -74,24 +86,39 @@ ulel.insertAdjacentHTML('beforeend',`<div style="color:blue">Showing All Records
         {
                 array3[sll]
                const array4 =array3[sll].split(',')
-               for(let ar2=0;ar2<array4.length;ar2++)
+               for(let ar2=0;ar2<2;ar2++)
                {
                 
                 if(array4[ar2].includes(inpval))
                 
                  {
-                    
-                    ulel.insertAdjacentHTML('beforeend',`<div style="color:orange">Showing Record Number ${k}</div>`)
+                    if(ar2==0)
+                    {
+                    ulel.insertAdjacentHTML('beforeend',`<div style="color:brown">Showing Record Number ${k}</div>`)
                     ulel.insertAdjacentHTML('beforeend',`<div>Name: ${array4[ar2]}</div>`)
                     ulel.insertAdjacentHTML('beforeend',`<div>Student Id: ${array4[ar2+1]}</div>`)
-                    ulel.insertAdjacentHTML('beforeend',`<div>Student Email: ${array4[ar2+2]}</div>`)
-                    ulel.insertAdjacentHTML('beforeend',`<div>Student contact: ${array4[ar2+3]}</div>`)
+                    ulel.insertAdjacentHTML('beforeend',`<div>Student Contact: ${array4[ar2+2]}</div>`)
+                    ulel.insertAdjacentHTML('beforeend',`<div>Student Email: ${array4[ar2+3]}</div>`)
                     ulel.insertAdjacentHTML('beforeend',`<div>Gender: ${array4[ar2+4]}</div>`)
                     ulel.insertAdjacentHTML('beforeend',`<button class="border-spacing-2 left-48 relative rounded-xl border-l-fuchsia-900 bg-lime-600 w-28" type="button" value="Edit" id="edit" onclick="EditItem()">Edit</button>`)
+                    ulel.insertAdjacentHTML('beforeend',`<button type="submit" id="delbutton" class="bg-red-300 rounded-lg border-2 border-slate-700" w-28 onclick="DeleteRecord()"> Delete </button>`)
                     delrecord=`Record${k}`
                     Editrecord=`Record${k}`
-                    // EditItem()
-                    console.log(delrecord)
+                    break;
+                 }
+                    else{
+                    ulel.insertAdjacentHTML('beforeend',`<div style="color:brown">Showing Record Number ${k}</div>`)
+                    ulel.insertAdjacentHTML('beforeend',`<div>Name: ${array4[0]}</div>`)
+                    ulel.insertAdjacentHTML('beforeend',`<div>Student Id: ${array4[1]}</div>`)
+                    ulel.insertAdjacentHTML('beforeend',`<div>Student Contact: ${array4[2]}</div>`)
+                    ulel.insertAdjacentHTML('beforeend',`<div>Student Email: ${array4[3]}</div>`)
+                    ulel.insertAdjacentHTML('beforeend',`<div>Gender: ${array4[4]}</div>`)
+                    ulel.insertAdjacentHTML('beforeend',`<button class="border-spacing-2 left-48 relative rounded-xl border-l-fuchsia-900 bg-lime-600 w-28" type="button" value="Edit" id="edit" onclick="EditItem()">Edit</button>`)
+                    ulel.insertAdjacentHTML('beforeend',`<button type="submit" id="delbutton" class="bg-red-300 rounded-lg border-2 border-slate-700" w-28 onclick="DeleteRecord()"> Delete </button>`)
+                    delrecord=`Record${k}`
+                    Editrecord=`Record${k}`
+                    break;
+                    }
             }
              
         }
@@ -105,19 +132,20 @@ ulel.insertAdjacentHTML('beforeend',`<div style="color:blue">Showing All Records
         alert("Please enter a minimum of 3 letters to enable the search")
     }
 }
-    // })
+    
     
     //Deleting records
     
-    document.getElementById("delbutton").addEventListener("click",function(){
+    
+        function DeleteRecord(){
         const flag=confirm("Are you sure you want to delete the record ?")
         if(flag){
         localStorage.removeItem(delrecord);
         localStorage.setItem(delrecord," ")
         window.location.reload();
     }
-    },{once:true})
-    
+    }
+       
 
     document.querySelector("#Delete").addEventListener("click", function(e){
         const flag=confirm("ALERT!!The action will delete all records permanently and is an irreversible process. Are you sure you want to continue?")
@@ -126,9 +154,6 @@ ulel.insertAdjacentHTML('beforeend',`<div style="color:blue">Showing All Records
         window.location.reload(); 
         }
     })
-
-
-
 
 
     function EditItem(){
@@ -148,22 +173,22 @@ ulel.insertAdjacentHTML('beforeend',`<div style="color:blue">Showing All Records
                        studentel.value=Alterrecord[1]
                        phoneel.value=Alterrecord[2]
                        emailel.value=Alterrecord[3]
+                       console.log(Alterrecord[4])
+                        if(Alterrecord[4]=='Male'){
+                            document.getElementById('Male').setAttribute("checked","checked")
+                        }
+                        else if(Alterrecord[5]=='Male'){
+                            document.getElementById('Male').setAttribute("checked","checked")
+                        }
+
                        if(!(NameValidate()) || !(StudentValidate()) || !(PhoneValidate()) || !(EmailValidate()) || !(GenderValidate())){
                         alert("Please check the entries before saving")
                         return false
                     }
                     return true
-                       //  FormValidate()
-                                      
-                    // localStorage.setItem(Editrecord,nameel.value +','+ studentel.value +''+ phoneel.value +',' + emailel.value)
-                        
-                     
+                                          
                 }
                  
-  
-                
-
-                
 function NameValidate(){
     const nameregex=/^[a-zA-Z]*\s{1}[a-zA-z]{3,}$/
     const nameel=document.getElementById('name')    
@@ -202,7 +227,7 @@ function StudentValidate() {
        return false
    }
    if(studentval.length==0){
-       document.querySelector('#studentspan').innerHTML="Student Idcannot be blank"
+       document.querySelector('#studentspan').innerHTML="Student Id cannot be blank"
        return false
    }
 
@@ -292,10 +317,9 @@ item.addEventListener('change',function(){
 
 function GenderValidate(genderval) {
 if(genderval==''){
-   document.querySelector('#genderspan').innerHTML="Please select the gender"
+   document.querySelector('#genderspan').innerHTML=`<br>Please select the gender`
    return false
 }
-// document.querySelector('#genderspan').innerHTML=`<img src="check.png" alt="" height="13px" width="13px">`
 return true
 }
 
@@ -305,7 +329,7 @@ function FormValidate() {
         return false
     }
     else {
-        const nameel=document.getElementById('name')    
+    const nameel=document.getElementById('name')    
     const nameval=nameel.value;
     const studentel=document.getElementById('studentid')    
     const studentval=studentel.value; 
@@ -319,8 +343,6 @@ function FormValidate() {
 }      
     
 }
-
-
 
 
 function Duplicate(studentval){
@@ -343,9 +365,9 @@ function Duplicate(studentval){
                 
                         if(array4[ar2].match(studentval))
                                  {
-                    
-                    document.querySelector('#studentspan').innerHTML=`<b>DUPLICATE ENTRY</b>`
-                    return true;
+                                      document.querySelector('#studentspan').innerHTML=`<b>Id Can't be changed</b>`
+                                           return true;
+                            
             }
                          
         }
@@ -356,3 +378,6 @@ function Duplicate(studentval){
     }
     return false
 }
+
+
+document.querySelector('#home').addEventListener("click", (e)=>window.location.reload())
